@@ -1,5 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController 
 
+  before_filter :select_plan, only: :new
+
   def create 
     #import everything this does in devise then add some code 
     super do |resource| 
@@ -16,5 +18,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end 
     end 
   end
+
+  private 
+
+  def select_plan 
+    unless params[:plan] && (params[:plan] == '1' || params[:plan] == '2') 
+      flash[:notice] = "Please select a plan" 
+      redirect_to root_url 
+    end 
+  end  
 
 end 
