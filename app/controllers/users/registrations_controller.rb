@@ -1,4 +1,4 @@
-class Users::RegistrationsController < Devise::RegistraitonsController 
+class Users::RegistrationsController < Devise::RegistrationsController 
 
   def create 
     #import everything this does in devise then add some code 
